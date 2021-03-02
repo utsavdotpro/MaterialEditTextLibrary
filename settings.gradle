@@ -1,2 +1,3 @@
+include ':MaterialEditText'
 include ':app'
 rootProject.name = "MaterialEditTextLibrary"
