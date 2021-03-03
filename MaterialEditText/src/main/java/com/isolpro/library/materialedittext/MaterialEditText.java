@@ -1,11 +1,13 @@
 package com.isolpro.library.materialedittext;
 
 import android.content.Context;
+import android.content.res.TypedArray;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.RelativeLayout;
 
+import androidx.annotation.ColorInt;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
@@ -19,6 +21,9 @@ public class MaterialEditText extends RelativeLayout {
   private View mv;
   private TextInputLayout textInputLayout;
   private TextInputEditText textInputEditText;
+
+  // - Props
+  private boolean required;
 
   public MaterialEditText(@NonNull Context context) {
     this(context, null);
@@ -35,6 +40,10 @@ public class MaterialEditText extends RelativeLayout {
 
     instantiate();
     initialize();
+    listen();
+    defaults(
+      context.getTheme().obtainStyledAttributes(attrs, R.styleable.MaterialEditText, 0, 0)
+    );
   }
 
   private void instantiate() {
@@ -47,5 +56,92 @@ public class MaterialEditText extends RelativeLayout {
   private void initialize() {
     addView(mv);
   }
+
+  private void listen() {
+  }
+
+  private void defaults(TypedArray ta) {
+  }
+
+  public CharSequence getErrorContentDescription() {
+    return textInputLayout.getErrorContentDescription();
+  }
+
+  public void setErrorContentDescription(String errorContentDescription) {
+    textInputLayout.setErrorContentDescription(errorContentDescription);
+  }
+
+  public Integer getBoxBackgroundColor() {
+    return textInputLayout.getBoxBackgroundColor();
+  }
+
+  public void setBoxBackgroundColor(@ColorInt int boxBackgroundColor) {
+    textInputLayout.setBoxBackgroundColor(boxBackgroundColor);
+  }
+
+  public Integer getBoxBackgroundMode() {
+    return textInputLayout.getBoxBackgroundMode();
+  }
+
+  public void setBoxBackgroundMode(int boxBackgroundMode) {
+    textInputLayout.setBoxBackgroundMode(boxBackgroundMode);
+  }
+
+  public boolean getErrorEnabled() {
+    return textInputLayout.isErrorEnabled();
+  }
+
+  public void setErrorEnabled(boolean errorEnabled) {
+    textInputLayout.setErrorEnabled(errorEnabled);
+  }
+
+  public boolean getEnabled() {
+    return textInputLayout.isEnabled();
+  }
+
+  public void setEnabled(boolean enabled) {
+    textInputLayout.setEnabled(enabled);
+  }
+
+  public boolean isRequired() {
+    return required;
+  }
+
+  public void setRequired(boolean required) {
+    this.required = required;
+  }
+
+  public CharSequence getHint() {
+    return textInputLayout.getHint();
+  }
+
+  public void setHint(String hint) {
+    textInputLayout.setHint(hint);
+  }
+
+  public CharSequence getText() {
+    return textInputEditText.getText();
+  }
+
+  public void setText(String text) {
+    textInputEditText.setText(text);
+  }
+
+  public int getInputType() {
+    return textInputEditText.getInputType();
+  }
+
+  public void setInputType(int inputType) {
+    textInputEditText.setInputType(inputType);
+  }
+
+  public int getMaxLines() {
+    return textInputEditText.getMaxLines();
+  }
+
+  public void setMaxLines(int maxLines) {
+    textInputEditText.setMaxLines(maxLines);
+  }
+
 
 }
