@@ -2,6 +2,7 @@ package com.isolpro.library.materialedittext;
 
 import android.content.Context;
 import android.content.res.TypedArray;
+import android.graphics.Color;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -61,6 +62,17 @@ public class MaterialEditText extends RelativeLayout {
   }
 
   private void defaults(TypedArray ta) {
+    setErrorContentDescription(ta.getString(R.styleable.MaterialEditText_met_errorContentDescription));
+    setBoxBackgroundColor(ta.getInteger(R.styleable.MaterialEditText_met_boxBackgroundColor, Color.WHITE));
+    setBoxBackgroundMode(ta.getInteger(R.styleable.MaterialEditText_met_boxBackgroundMode, 2));
+    setErrorEnabled(ta.getBoolean(R.styleable.MaterialEditText_met_errorEnabled, false));
+    setEnabled(ta.getBoolean(R.styleable.MaterialEditText_met_enabled, true));
+    setRequired(ta.getBoolean(R.styleable.MaterialEditText_met_required, false));
+    setHint(ta.getString(R.styleable.MaterialEditText_met_hint));
+
+    setText(ta.getString(R.styleable.MaterialEditText_met_text));
+    setInputType(ta.getInteger(R.styleable.MaterialEditText_met_inputType, 1));
+    setMaxLines(ta.getInteger(R.styleable.MaterialEditText_met_maxLines, 1));
   }
 
   public CharSequence getErrorContentDescription() {

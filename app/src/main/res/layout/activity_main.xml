@@ -10,7 +10,9 @@
 
   <com.isolpro.library.materialedittext.MaterialEditText
     android:layout_width="match_parent"
-    android:layout_height="wrap_content" />
+    android:layout_height="wrap_content"
+    app:met_enabled="true"
+    app:met_hint="Hello"/>
 
   <com.isolpro.library.materialedittext.MaterialEditText
     android:layout_width="match_parent"
