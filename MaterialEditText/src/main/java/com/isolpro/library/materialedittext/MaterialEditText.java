@@ -51,8 +51,10 @@ public class MaterialEditText extends RelativeLayout {
   public static boolean validateEditTexts(OnValidationErrorCallback onValidationErrorCallback, MaterialEditText... materialEditTexts) {
     for (MaterialEditText met : materialEditTexts) {
       if (met.isRequired() && met.getText().toString().isEmpty()) {
-        if (met.isErrorEnabled()) met.setErrorEnabled(true);
+        if (met.isErrorEnabled()) met.showError(3000);
+
         if (onValidationErrorCallback != null) onValidationErrorCallback.exec(met);
+
         return false;
       }
     }
@@ -111,8 +113,8 @@ public class MaterialEditText extends RelativeLayout {
   public void showError(int autoHideDuration) {
     setErrorVisible(true);
 
-    if (autoHideDuration < 0)
-      Utils.setTimeout(o -> hideError(), 3000);
+    if (autoHideDuration >= 0)
+      Utils.setTimeout(o -> hideError(), autoHideDuration);
   }
 
   public void showError() {

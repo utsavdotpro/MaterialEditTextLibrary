@@ -1,39 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
   xmlns:tools="http://schemas.android.com/tools"
   android:layout_width="match_parent"
   android:layout_height="match_parent"
-  xmlns:app="http://schemas.android.com/apk/res-auto"
   android:orientation="vertical"
   android:padding="20dp"
   tools:context=".MainActivity">
 
   <com.isolpro.library.materialedittext.MaterialEditText
+    android:id="@+id/metEmail"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    app:met_enabled="true"
-    app:met_hint="Hello"/>
+    app:met_errorEnabled="true"
+    app:met_errorMessage="Email can't be empty!"
+    app:met_required="true"
+    app:met_hint="Email" />
 
   <com.isolpro.library.materialedittext.MaterialEditText
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content" />
-
-  <com.google.android.material.textfield.TextInputLayout
+    android:id="@+id/metPassword"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:hint="Registered Email"
-    app:errorContentDescription="Email can't be empty!"
-    app:boxBackgroundColor="@color/white"
-    app:boxBackgroundMode="outline"
-    app:errorEnabled="true">
+    app:met_errorEnabled="true"
+    app:met_errorMessage="Password can't be empty!"
+    app:met_required="true"
+    app:met_hint="Password" />
 
-    <com.google.android.material.textfield.TextInputEditText
-      android:id="@+id/txtEmail"
-      android:layout_width="match_parent"
-      android:layout_height="wrap_content"
-      android:inputType="textEmailAddress"
-      android:maxLines="1" />
-
-  </com.google.android.material.textfield.TextInputLayout>
+  <com.google.android.material.button.MaterialButton
+    android:id="@+id/btnValidate"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="Validate" />
 
 </LinearLayout>
