@@ -47,6 +47,21 @@ public class MaterialEditText extends RelativeLayout {
     );
   }
 
+  public static boolean validateEditTexts(OnValidationErrorCallback onValidationErrorCallback, MaterialEditText... materialEditTexts) {
+    for (MaterialEditText met : materialEditTexts) {
+      if (met.isRequired() && met.getText().toString().isEmpty()) {
+        if (onValidationErrorCallback != null) onValidationErrorCallback.exec(met);
+        return false;
+      }
+    }
+
+    return true;
+  }
+
+  public static boolean validateEditTexts(MaterialEditText... materialEditTexts) {
+    return validateEditTexts(null, materialEditTexts);
+  }
+
   private void instantiate() {
     mv = LayoutInflater.from(context).inflate(R.layout.material_edit_text, null);
 
@@ -154,6 +169,5 @@ public class MaterialEditText extends RelativeLayout {
   public void setMaxLines(int maxLines) {
     textInputEditText.setMaxLines(maxLines);
   }
-
 
 }
