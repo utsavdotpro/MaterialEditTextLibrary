@@ -12,19 +12,28 @@
     android:id="@+id/metEmail"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    app:met_errorMessage="Email can't be empty!"
     android:layout_marginBottom="10dp"
-    app:met_required="true"
-    app:met_hint="Email" />
+    app:met_errorMessage="Email can't be empty!"
+    app:met_hint="Email"
+    app:met_required="true" />
 
   <com.isolpro.library.materialedittext.MaterialEditText
     android:id="@+id/metPassword"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    app:met_errorMessage="Password can't be empty!"
     android:layout_marginBottom="10dp"
-    app:met_required="true"
-    app:met_hint="Password" />
+    app:met_errorMessage="Password can't be empty!"
+    app:met_hint="Password"
+    app:met_required="true" />
+
+  <com.isolpro.library.materialedittext.MaterialEditText
+    android:id="@+id/metAddress"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="10dp"
+    app:met_hint="Address"
+    app:met_inputType="textMultiLine"
+    app:met_lines="5" />
 
   <com.google.android.material.button.MaterialButton
     android:id="@+id/btnValidate"

@@ -15,7 +15,7 @@ Advance EditText with features like required data validation. Built with Materia
 **Step 2:** Add to app level build.gradle
 
 	dependencies {
-	    implementation 'com.github.u-barnwal:MaterialEditText:VERSION'
+	    implementation 'com.github.u-barnwal:MaterialEditTextLibrary:VERSION'
 	}
 ## How to use
 **Create view**

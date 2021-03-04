@@ -91,7 +91,7 @@ public class MaterialEditText extends RelativeLayout {
 
     setText(ta.getString(R.styleable.MaterialEditText_met_text));
     setInputType(ta.getInteger(R.styleable.MaterialEditText_met_inputType, 1));
-    setMaxLines(ta.getInteger(R.styleable.MaterialEditText_met_maxLines, 1));
+    setLines(ta.getInteger(R.styleable.MaterialEditText_met_lines, 1));
   }
 
   private void setError(CharSequence errorMessage) {
@@ -186,12 +186,8 @@ public class MaterialEditText extends RelativeLayout {
     textInputEditText.setInputType(inputType);
   }
 
-  public int getMaxLines() {
-    return textInputEditText.getMaxLines();
-  }
-
-  public void setMaxLines(int maxLines) {
-    textInputEditText.setMaxLines(maxLines);
+  public void setLines(int lines) {
+    textInputEditText.setLines(lines);
   }
 
 }
