@@ -1,4 +1,4 @@
-[![](https://jitpack.io/v/u-barnwal/MaterialEditText.svg)](https://jitpack.io/#u-barnwal/MaterialEditText)
+[![](https://jitpack.io/v/u-barnwal/MaterialEditTextLibrary.svg)](https://jitpack.io/#u-barnwal/MaterialEditTextLibrary)
 # MaterialEditText
 Advance EditText with features like required data validation. Built with Material.io components
 
@@ -30,7 +30,7 @@ Advance EditText with features like required data validation. Built with Materia
       app:met_errorMessage="Email can't be empty!"
       app:met_hint="Email"
       app:met_inputType="text"
-      app:met_maxLines="1"
+      app:met_lines="1"
       app:met_required="true"
       app:met_text="dummy@domain.com" />
 
