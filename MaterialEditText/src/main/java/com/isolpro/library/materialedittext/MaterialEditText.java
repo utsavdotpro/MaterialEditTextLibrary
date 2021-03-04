@@ -24,6 +24,7 @@ public class MaterialEditText extends RelativeLayout {
   private TextInputEditText textInputEditText;
 
   // - Props
+  private String errorMessage;
   private boolean required;
 
   public MaterialEditText(@NonNull Context context) {
@@ -77,7 +78,7 @@ public class MaterialEditText extends RelativeLayout {
   }
 
   private void defaults(TypedArray ta) {
-    setErrorContentDescription(ta.getString(R.styleable.MaterialEditText_met_errorContentDescription));
+    setErrorMessage(ta.getString(R.styleable.MaterialEditText_met_errorMessage));
     setBoxBackgroundColor(ta.getInteger(R.styleable.MaterialEditText_met_boxBackgroundColor, Color.WHITE));
     setBoxBackgroundMode(ta.getInteger(R.styleable.MaterialEditText_met_boxBackgroundMode, 2));
     setErrorEnabled(ta.getBoolean(R.styleable.MaterialEditText_met_errorEnabled, false));
@@ -90,12 +91,28 @@ public class MaterialEditText extends RelativeLayout {
     setMaxLines(ta.getInteger(R.styleable.MaterialEditText_met_maxLines, 1));
   }
 
-  public CharSequence getErrorContentDescription() {
-    return textInputLayout.getErrorContentDescription();
+  private CharSequence getError() {
+    return textInputLayout.getError();
   }
 
-  public void setErrorContentDescription(String errorContentDescription) {
-    textInputLayout.setErrorContentDescription(errorContentDescription);
+  private void setError(CharSequence errorMessage) {
+    textInputLayout.setError(errorMessage);
+  }
+
+  public String getErrorMessage() {
+    return errorMessage;
+  }
+
+  public void setErrorMessage(String errorMessage) {
+    this.errorMessage = errorMessage;
+  }
+
+  public boolean isErrorVisible() {
+    return getError() != "";
+  }
+
+  public void setErrorVisible(boolean isErrorVisible) {
+    setError(isErrorVisible ? getErrorMessage() : "");
   }
 
   public Integer getBoxBackgroundColor() {
@@ -122,7 +139,7 @@ public class MaterialEditText extends RelativeLayout {
     textInputLayout.setErrorEnabled(errorEnabled);
   }
 
-  public boolean getEnabled() {
+  public boolean isEnabled() {
     return textInputLayout.isEnabled();
   }
 

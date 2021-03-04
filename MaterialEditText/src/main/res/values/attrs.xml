@@ -3,7 +3,7 @@
 
   <declare-styleable name="MaterialEditText">
     <!-- TIL -->
-    <attr name="met_errorContentDescription" format="string" />
+    <attr name="met_errorMessage" format="string" />
     <attr name="met_boxBackgroundColor" format="color" />
     <attr name="met_boxBackgroundMode">
       <enum name="none" value="0" />
