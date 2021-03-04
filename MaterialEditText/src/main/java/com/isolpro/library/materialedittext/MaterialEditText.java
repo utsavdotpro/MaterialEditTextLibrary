@@ -51,6 +51,7 @@ public class MaterialEditText extends RelativeLayout {
   public static boolean validateEditTexts(OnValidationErrorCallback onValidationErrorCallback, MaterialEditText... materialEditTexts) {
     for (MaterialEditText met : materialEditTexts) {
       if (met.isRequired() && met.getText().toString().isEmpty()) {
+        if (met.isErrorEnabled()) met.setErrorEnabled(true);
         if (onValidationErrorCallback != null) onValidationErrorCallback.exec(met);
         return false;
       }
@@ -91,12 +92,12 @@ public class MaterialEditText extends RelativeLayout {
     setMaxLines(ta.getInteger(R.styleable.MaterialEditText_met_maxLines, 1));
   }
 
-  private CharSequence getError() {
-    return textInputLayout.getError();
-  }
-
   private void setError(CharSequence errorMessage) {
     textInputLayout.setError(errorMessage);
+  }
+
+  private void setErrorVisible(boolean isErrorVisible) {
+    setError(isErrorVisible ? getErrorMessage() : "");
   }
 
   public String getErrorMessage() {
@@ -107,12 +108,19 @@ public class MaterialEditText extends RelativeLayout {
     this.errorMessage = errorMessage;
   }
 
-  public boolean isErrorVisible() {
-    return getError() != "";
+  public void showError(int autoHideDuration) {
+    setErrorVisible(true);
+
+    if (autoHideDuration < 0)
+      Utils.setTimeout(o -> hideError(), 3000);
   }
 
-  public void setErrorVisible(boolean isErrorVisible) {
-    setError(isErrorVisible ? getErrorMessage() : "");
+  public void showError() {
+    showError(-1);
+  }
+
+  public void hideError() {
+    setErrorVisible(false);
   }
 
   public Integer getBoxBackgroundColor() {
@@ -131,7 +139,7 @@ public class MaterialEditText extends RelativeLayout {
     textInputLayout.setBoxBackgroundMode(boxBackgroundMode);
   }
 
-  public boolean getErrorEnabled() {
+  public boolean isErrorEnabled() {
     return textInputLayout.isErrorEnabled();
   }
 
