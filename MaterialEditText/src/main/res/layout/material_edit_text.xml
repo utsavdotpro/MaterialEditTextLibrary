@@ -10,8 +10,7 @@
     android:layout_height="wrap_content"
     android:hint="Hint"
     app:boxBackgroundColor="@android:color/white"
-    app:boxBackgroundMode="outline"
-    app:errorEnabled="true">
+    app:boxBackgroundMode="outline">
 
     <com.google.android.material.textfield.TextInputEditText
       android:id="@+id/tiet"

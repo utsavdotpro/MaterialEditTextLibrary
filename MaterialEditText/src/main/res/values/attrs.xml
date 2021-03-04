@@ -10,7 +10,6 @@
       <enum name="filled" value="1" />
       <enum name="outline" value="2" />
     </attr>
-    <attr name="met_errorEnabled" format="boolean" />
     <attr name="met_enabled" format="boolean" />
     <attr name="met_required" format="boolean" />
     <attr name="met_hint" format="string" />

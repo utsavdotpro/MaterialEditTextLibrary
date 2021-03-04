@@ -51,7 +51,8 @@ public class MaterialEditText extends RelativeLayout {
   public static boolean validateEditTexts(OnValidationErrorCallback onValidationErrorCallback, MaterialEditText... materialEditTexts) {
     for (MaterialEditText met : materialEditTexts) {
       if (met.isRequired() && met.getText().toString().isEmpty()) {
-        if (met.isErrorEnabled()) met.showError(3000);
+        if (!met.getErrorMessage().isEmpty())
+          met.showError(3000);
 
         if (onValidationErrorCallback != null) onValidationErrorCallback.exec(met);
 
@@ -84,7 +85,6 @@ public class MaterialEditText extends RelativeLayout {
     setErrorMessage(ta.getString(R.styleable.MaterialEditText_met_errorMessage));
     setBoxBackgroundColor(ta.getInteger(R.styleable.MaterialEditText_met_boxBackgroundColor, Color.WHITE));
     setBoxBackgroundMode(ta.getInteger(R.styleable.MaterialEditText_met_boxBackgroundMode, 2));
-    setErrorEnabled(ta.getBoolean(R.styleable.MaterialEditText_met_errorEnabled, false));
     setEnabled(ta.getBoolean(R.styleable.MaterialEditText_met_enabled, true));
     setRequired(ta.getBoolean(R.styleable.MaterialEditText_met_required, false));
     setHint(ta.getString(R.styleable.MaterialEditText_met_hint));
@@ -99,7 +99,12 @@ public class MaterialEditText extends RelativeLayout {
   }
 
   private void setErrorVisible(boolean isErrorVisible) {
+    setErrorEnabled(isErrorVisible);
     setError(isErrorVisible ? getErrorMessage() : "");
+  }
+
+  private void setErrorEnabled(boolean errorEnabled) {
+    textInputLayout.setErrorEnabled(errorEnabled);
   }
 
   public String getErrorMessage() {
@@ -139,14 +144,6 @@ public class MaterialEditText extends RelativeLayout {
 
   public void setBoxBackgroundMode(int boxBackgroundMode) {
     textInputLayout.setBoxBackgroundMode(boxBackgroundMode);
-  }
-
-  public boolean isErrorEnabled() {
-    return textInputLayout.isErrorEnabled();
-  }
-
-  public void setErrorEnabled(boolean errorEnabled) {
-    textInputLayout.setErrorEnabled(errorEnabled);
   }
 
   public boolean isEnabled() {
