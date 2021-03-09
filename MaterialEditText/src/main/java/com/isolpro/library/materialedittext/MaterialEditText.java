@@ -190,4 +190,32 @@ public class MaterialEditText extends RelativeLayout {
     textInputEditText.setLines(lines);
   }
 
+  public String getString() {
+    return getText().toString();
+  }
+
+  public int getInteger(int defaultValue) {
+    try {
+      return Integer.parseInt(getString());
+    } catch (NumberFormatException e) {
+      return defaultValue;
+    }
+  }
+
+  public float getFloat(float defaultValue) {
+    try {
+      return Float.parseFloat(getString());
+    } catch (NumberFormatException e) {
+      return defaultValue;
+    }
+  }
+
+  public boolean getBoolean(boolean defaultValue) {
+    try {
+      return Boolean.parseBoolean(getString());
+    } catch (NumberFormatException e) {
+      return defaultValue;
+    }
+  }
+
 }
