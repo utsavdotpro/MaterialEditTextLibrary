@@ -190,6 +190,10 @@ public class MaterialEditText extends RelativeLayout {
     textInputEditText.setLines(lines);
   }
 
+  public void clear() {
+    setText("");
+  }
+
   public String getString() {
     return getText().toString();
   }
