@@ -24,7 +24,7 @@ public class MaterialEditText extends RelativeLayout {
   private TextInputEditText textInputEditText;
 
   // - Props
-  private String errorMessage;
+  private String errorMessage = "";
   private boolean required;
 
   public MaterialEditText(@NonNull Context context) {
@@ -112,7 +112,7 @@ public class MaterialEditText extends RelativeLayout {
   }
 
   public void setErrorMessage(String errorMessage) {
-    this.errorMessage = errorMessage;
+    this.errorMessage = errorMessage != null ? errorMessage : "";
   }
 
   public void showError(int autoHideDuration) {
