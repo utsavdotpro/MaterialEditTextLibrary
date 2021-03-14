@@ -3,6 +3,7 @@ package com.isolpro.library.materialedittext;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Color;
+import android.text.TextWatcher;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -220,6 +221,10 @@ public class MaterialEditText extends RelativeLayout {
     } catch (NumberFormatException e) {
       return defaultValue;
     }
+  }
+
+  public void addTextChangedListener(TextWatcher textWatcher) {
+    textInputEditText.addTextChangedListener(textWatcher);
   }
 
 }
