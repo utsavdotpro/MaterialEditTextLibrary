@@ -19,10 +19,12 @@ import com.google.android.material.textfield.TextInputLayout;
 public class MaterialEditText extends RelativeLayout {
 
   private final Context context;
+  private final AttributeSet attrs;
+
+  protected TextInputLayout textInputLayout;
+  protected TextInputEditText textInputEditText;
 
   private View mv;
-  private TextInputLayout textInputLayout;
-  private TextInputEditText textInputEditText;
 
   // - Props
   private String errorMessage = "";
@@ -40,13 +42,11 @@ public class MaterialEditText extends RelativeLayout {
     super(context, attrs, defStyleAttr);
 
     this.context = context;
+    this.attrs = attrs;
 
     instantiate();
     initialize();
     listen();
-    defaults(
-      context.getTheme().obtainStyledAttributes(attrs, R.styleable.MaterialEditText, 0, 0)
-    );
   }
 
   public static boolean validateEditTexts(OnValidationErrorCallback onValidationErrorCallback, MaterialEditText... materialEditTexts) {
@@ -68,18 +68,22 @@ public class MaterialEditText extends RelativeLayout {
     return validateEditTexts(null, materialEditTexts);
   }
 
-  private void instantiate() {
+  protected void instantiate() {
     mv = LayoutInflater.from(context).inflate(R.layout.material_edit_text, null);
 
     textInputLayout = mv.findViewById(R.id.til);
     textInputEditText = mv.findViewById(R.id.tiet);
   }
 
-  private void initialize() {
+  protected void initialize() {
     addView(mv);
+
+    defaults(
+      context.getTheme().obtainStyledAttributes(attrs, R.styleable.MaterialEditText, 0, 0)
+    );
   }
 
-  private void listen() {
+  protected void listen() {
   }
 
   private void defaults(TypedArray ta) {
